@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
-public class SearchJobInSearchArea {
+public class SearchJobInSearchArea extends TestBase {
 
     @Test
     @Tag("Jenkins")
@@ -20,7 +20,7 @@ public class SearchJobInSearchArea {
             $("[data-qa='search-input']").setValue("QA инженер автоматизация").pressEnter();
         });
         step("Убедиться, что найдены вакансии именно для QA", () -> {
-            $("div[data-qa='employer-index-title']").shouldHave(text("Разместите вакансию на hh.ru"));
+            $("h1[data-qa='bloko-header-3']").shouldHave(text("QA инженер автоматизация"));
         });
     }
 }
