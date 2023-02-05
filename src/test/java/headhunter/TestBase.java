@@ -1,6 +1,7 @@
 package headhunter;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attachments;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -27,8 +28,10 @@ public class TestBase {
     @BeforeEach
     void addListener() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        Selenide.clearBrowserCookies();
     }
 
+    /*
     @AfterEach
     void addAttachments() {
         Attachments.screenshotAs("Last screenshot");
@@ -36,4 +39,6 @@ public class TestBase {
         Attachments.browserConsoleLogs();
         Attachments.addVideo();
     }
+
+     */
 }
