@@ -31,7 +31,6 @@ public class TestBase {
         Selenide.clearBrowserCookies();
     }
 
-    /*
     @AfterEach
     void addAttachments() {
         Attachments.screenshotAs("Last screenshot");
@@ -39,6 +38,4 @@ public class TestBase {
         Attachments.browserConsoleLogs();
         Attachments.addVideo();
     }
-
-     */
 }
