@@ -8,6 +8,7 @@ notifications/config.json
 ### IntelliJ IDEA ###
 .idea/
 .idea/modules.xml
+
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
@@ -52,5 +53,3 @@ bin/
 # Default ignored files
 /shelf/
 /workspace.xml
-### Example user template template
-### Example user template
