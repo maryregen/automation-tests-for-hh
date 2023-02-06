@@ -79,7 +79,7 @@ export BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
 >
 > `${BROWSER_PLATFORM}` - наименование браузера (_по умолчанию - <code>chrome</code>_).
 > 
-> ${BROWSER_VERSION} - номер версии браузера (_по умолчанию - <code>100.0</code>_).
+> `${BROWSER_VERSION}` - номер версии браузера (_по умолчанию - <code>100.0</code>_).
 > 
 > `${BROWSER_SIZE}` - размер окна браузера (_по умолчанию - <code>1920x1080</code>_).
 >
