@@ -16,16 +16,18 @@
 ## Технологии и инструменты
 
 <p align="center">
-<img width="6%" title="IntelliJ IDEA" src="images/logo/Intelij_IDEA.svg">
-<img width="6%" title="Java" src="images/logo/Java.svg">
-<img width="6%" title="Selenide" src="images/logo/Selenide.svg">
-<img width="6%" title="Selenoid" src="images/logo/Selenoid.svg">
-<img width="6%" title="Allure Report" src="images/logo/Allure_Report.svg">
-<img width="6%" title="Gradle" src="images/logo/Gradle.svg">
-<img width="6%" title="JUnit5" src="images/logo/JUnit5.svg">
-<img width="6%" title="GitHub" src="images/logo/GitHub.svg">
-<img width="6%" title="Jenkins" src="images/logo/Jenkins.svg">
-<img width="6%" title="Telegram" src="images/logo/Telegram.svg">
+<img width="6%" title="IntelliJ IDEA" src="images/logo/IntelliJ_IDEA.png">
+<img width="6%" title="Java" src="images/logo/Java_logo.png">
+<img width="6%" title="Selenide" src="images/logo/Selenide.png">
+<img width="6%" title="Selenoid" src="images/logo/Selenoid.png">
+<img width="6%" title="Allure Report" src="images/logo/AllureReports.png">
+<img width="6%" title="Gradle" src="images/logo/Gradle.png">
+<img width="6%" title="JUnit5" src="images/logo/JUnit5.png">
+<img width="6%" title="GitHub" src="images/logo/GitHub.png">
+<img width="6%" title="Jenkins" src="images/logo/Jenkins.png">
+<img width="6%" title="Telegram" src="images/logo/Telegram.png">
+<img width="6%" title="Jira" src="images/logo/Jira.png">
+<img width="6%" title="Allure TestOps" src="images/logo/AllureTestOps.png">
 </p>
 
 Автотесты написаны на <code>Java</code> с использованием <code>JUnit 5</code> и <code>Gradle</code>.
@@ -81,7 +83,7 @@ export BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
 > 
 > `${BROWSER_VERSION}` - номер версии браузера (_по умолчанию - <code>100.0</code>_).
 > 
-> `${BROWSER_SIZE}` - размер окна браузера (_по умолчанию - <code>1920x1080</code>_).
+> `${BROWSER_SIZE}` - размер окна браузера (_по умолчанию - <code>1366x768</code>_).
 >
 > `${BASE_URL}` - адрес удаленного сервера, на котором будут запускаться тесты.
 
@@ -117,14 +119,14 @@ export BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
 <img src="images/screenshots/AllureTestCases.png">
 </p>
 
-### Мануальные тест-кейсы
+### Пример мануального тест-кейса
 <p align="center">
-<img src="images/screenshots/AllureTestopsManualTest.png">
+<img src="images/screenshots/AllureTestOpsManualTest.png">
 </p>
 
-### Запуски тест-кейсов
+### Пример запуска тест-кейсов
 <p align="center">
-<img src="images/screenshots/AllureTestopsLaunches.png">
+<img src="images/screenshots/AllureTestOpsLaunches.png">
 </p>
 
 <a id="jira"></a>
@@ -136,7 +138,7 @@ export BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
 <a id="telegram"></a>
 ## Уведомления в Telegram с использованием бота
 
-<p align="center">
+<p>
 <img src="images/screenshots/TelegramBot.png">
 </p>
 
