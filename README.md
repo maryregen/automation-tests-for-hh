@@ -25,9 +25,9 @@
 <img width="6%" title="JUnit5" src="images/logo/JUnit5.png">
 <img width="6%" title="GitHub" src="images/logo/GitHub.png">
 <img width="6%" title="Jenkins" src="images/logo/Jenkins.png">
-<img width="8%" title="Telegram" src="images/logo/Telegram.png">
-<img width="6%" title="Jira" src="images/logo/Jira.png">
 <img width="6%" title="Allure TestOps" src="images/logo/AllureTestOps.svg">
+<img width="6%" title="Telegram" src="images/logo/Telegram.png">
+<img width="6%" title="Jira" src="images/logo/Jira.png">
 </p>
 
 Автотесты написаны на <code>Java</code> с использованием <code>JUnit 5</code> и <code>Gradle</code>.
