@@ -6,7 +6,7 @@ notifications/config.json
 !**/src/test/**/build/
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
@@ -54,10 +54,3 @@ bin/
 /workspace.xml
 ### Example user template template
 ### Example user template
-
-# IntelliJ project files
-out
-gen!/.idea/gradle.xml
-/.idea/misc.xml
-/.idea/vcs.xml
-/.idea/workspace.xml
