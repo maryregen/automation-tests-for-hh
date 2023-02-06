@@ -72,7 +72,7 @@ export BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
   -Dbrowser=${BROWSER_PLATFORM} \
   -Dversion=${BROWSER_VERSION} \
   -DwindowSize=${BROWSER_SIZE} \
-  -DbaseUrl=${BASE_URL}
+  -DbaseUrl=${REMOTE_URL}
 ```
 
 > `${BROWSER}` - комбинация браузера и версии (_по умолчанию - <code>chrome 100.0</code>_).
@@ -83,7 +83,7 @@ export BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
 > 
 > `${BROWSER_SIZE}` - размер окна браузера (_по умолчанию - <code>1366x768</code>_).
 >
-> `${BASE_URL}` - адрес удаленного сервера, на котором будут запускаться тесты.
+> `${REMOTE_URL}` - адрес удаленного сервера, на котором будут запускаться тесты.
 
 <a id="jenkins"></a>
 ## Запуск тестов в Jenkins

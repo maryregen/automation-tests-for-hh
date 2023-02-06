@@ -42,7 +42,7 @@ public class Attachments {
                 + "' type='video/mp4'></video></body></html>";
     }
     public static URL getVideoUrl(String sessionId) {
-        String videoUrl = "https://" + System.getProperty("baseUrl", "selenoid.autotests.cloud/") + "video/" + sessionId + ".mp4";
+        String videoUrl = "https://" + System.getProperty("remoteUrl", "selenoid.autotests.cloud/") + "video/" + sessionId + ".mp4";
 
         try {
             return new URL(videoUrl);
