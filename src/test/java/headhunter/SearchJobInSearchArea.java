@@ -2,10 +2,6 @@ package headhunter;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 import static io.qameta.allure.Allure.step;
 
 public class SearchJobInSearchArea extends TestBase {
@@ -14,13 +10,13 @@ public class SearchJobInSearchArea extends TestBase {
     @Tag("Jenkins")
     public void searchJobForQAAuto() {
         step("Открыть страницу", () -> {
-            open("https://hh.ru");
+            searchThingsOnSite.openPage();
         });
         step("Ввести текст в область поиска", () -> {
-            $("[data-qa='search-input']").setValue("QA инженер автоматизация").pressEnter();
+            searchThingsOnSite.inputTextToSearchArea();
         });
         step("Убедиться, что найдены вакансии именно для QA", () -> {
-            $("h1[data-qa='bloko-header-3']").shouldHave(text("QA инженер автоматизация"));
+            searchThingsOnSite.findResults();
         });
     }
 }
