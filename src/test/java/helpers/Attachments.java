@@ -29,10 +29,10 @@ public class Attachments {
     public static String attachAsText(String attachName, String message) {
         return message;
     }
-    public static void browserConsoleLogs(){
-        attachAsText("Browser Console Logs",
-                String.join("\n", Selenide.getWebDriverLogs(BROWSER))
-        );
+    public static void browserConsoleLogs() {
+        String logs = String.join("\n", Selenide.getWebDriverLogs(BROWSER));
+        System.out.println(logs);
+        attachAsText("Browser Console Logs", logs);
     }
 
     @Attachment(value = "Video", type = "text/html", fileExtension = ".html")

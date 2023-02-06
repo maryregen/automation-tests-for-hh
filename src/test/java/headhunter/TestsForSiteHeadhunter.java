@@ -48,6 +48,19 @@ public class TestsForSiteHeadhunter extends TestBase {
     }
     @Test
     @Tag("Jenkins")
+    public void searchJobForQAAuto() {
+        step("Открыть страницу", () -> {
+            searchThingsOnSite.openPage();
+        });
+        step("Ввести текст в область поиска", () -> {
+            searchThingsOnSite.inputTextToSearchArea();
+        });
+        step("Убедиться, что найдены вакансии именно для QA", () -> {
+            searchThingsOnSite.findResults();
+        });
+    }
+    @Test
+    @Tag("Jenkins")
     public void chooseAnotherCity() {
         step("Открыть страницу", () -> {
             searchThingsOnSite.openPage();
@@ -60,19 +73,6 @@ public class TestsForSiteHeadhunter extends TestBase {
         });
         step("Проверить, что вакансии показываются именно для города Казань", () -> {
             searchThingsOnSite.findTextForCity();
-        });
-    }
-    @Test
-    @Tag("Jenkins")
-    public void searchJobForQAAuto() {
-        step("Открыть страницу", () -> {
-            searchThingsOnSite.openPage();
-        });
-        step("Ввести текст в область поиска", () -> {
-            searchThingsOnSite.inputTextToSearchArea();
-        });
-        step("Убедиться, что найдены вакансии именно для QA", () -> {
-            searchThingsOnSite.findResults();
         });
     }
 }

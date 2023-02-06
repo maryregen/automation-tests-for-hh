@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class SearchThingsOnSite {
-    String url = "https://hh.ru";
+    //String url = "https://hh.ru";
     String text = "QA инженер автоматизация";
     String textForEmployers = "Разместите вакансию на hh.ru";
     String textForJobSeekers = "Работа найдется для каждого";
@@ -16,8 +16,7 @@ public class SearchThingsOnSite {
     String textForCity = "Работа в компаниях Казани";
 
     public SearchThingsOnSite openPage() {
-
-        open(url);
+        open("/");
         return this;
     }
     public SearchThingsOnSite inputTextToSearchArea() {
