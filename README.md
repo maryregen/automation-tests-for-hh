@@ -145,5 +145,5 @@ export BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
 
 > К каждому тесту в отчете прилагается видео
 <p align="center">
-  <img src="images/video/Video.gif">
+  <img src="images/video/VideoGif.gif">
 </p>
