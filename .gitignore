@@ -57,4 +57,7 @@ bin/
 
 # IntelliJ project files
 out
-gen
+gen!/.idea/gradle.xml
+/.idea/misc.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
