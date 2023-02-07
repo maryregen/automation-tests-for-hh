@@ -72,7 +72,7 @@ export BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
   -Dbrowser=${BROWSER_PLATFORM} \
   -Dversion=${BROWSER_VERSION} \
   -DwindowSize=${BROWSER_SIZE} \
-  -DbaseUrl=${REMOTE_URL}
+  -DremoteUrl=${REMOTE_URL}
 ```
 
 > `${BROWSER}` - комбинация браузера и версии (_по умолчанию - <code>chrome 100.0</code>_).
