@@ -2,6 +2,7 @@ package headhunter;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
 
 import static io.qameta.allure.Allure.step;
 
