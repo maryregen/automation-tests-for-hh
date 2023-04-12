@@ -1,4 +1,4 @@
-package headhunter.pages;
+package ui.pages;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;

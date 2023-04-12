@@ -1,9 +1,9 @@
-package headhunter;
+package ui;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import headhunter.pages.SearchThingsOnSite;
-import helpers.Attachments;
+import ui.pages.SearchThingsOnSite;
+import ui.helpers.Attachments;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;

@@ -1,7 +1,7 @@
-package headhunter;
+package ui;
 
 import com.codeborne.selenide.Configuration;
-import headhunter.config.WebDriverConfig;
+import ui.config.WebDriverConfig;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.remote.DesiredCapabilities;
 

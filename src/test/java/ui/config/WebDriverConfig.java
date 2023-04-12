@@ -1,4 +1,4 @@
-package headhunter.config;
+package ui.config;
 
 import org.aeonbits.owner.Config;
 
