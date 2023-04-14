@@ -9,7 +9,7 @@ public class SearchThingsOnSite {
     //String url = "https://hh.ru";
     String text = "QA инженер автоматизация";
     String textForEmployers = "Разместите вакансию на hh.ru";
-    String textForJobSeekers = "Работа найдется для каждого";
+    String textForJobSeekers = "Работа найдётся для каждого";
     String textForJobSeekersEng = "There's a job for everyone";
     String buttonText = "Соискателям";
     String cityText = "Казань";

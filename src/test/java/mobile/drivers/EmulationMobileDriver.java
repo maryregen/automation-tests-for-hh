@@ -53,7 +53,6 @@ public class EmulationMobileDriver implements WebDriverProvider {
         String appPath = mobileConfig.getAppPath();
 
         File app = new File(appPath);
-
         return app.getAbsolutePath();
     }
 }

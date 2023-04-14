@@ -15,6 +15,7 @@ public class TestBase {
     @BeforeAll
     static void beforeAll() {
         WebDriverProvider provider = new WebDriverProvider();
+        System.setProperty("chromeoptions.args", "--remote-allow-origins=*");
 
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }

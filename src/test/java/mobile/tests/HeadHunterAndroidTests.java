@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
 
-public class AndroidTests extends TestBase {
+public class HeadHunterAndroidTests extends TestBase {
 
     @BeforeEach
     public void setUp() {
@@ -18,7 +18,6 @@ public class AndroidTests extends TestBase {
         step("Запретить нотификации", () -> {
             chooseUserPage.denyNotification();
         });
-
     }
 
     @Tag("MOBILE")
@@ -43,9 +42,5 @@ public class AndroidTests extends TestBase {
         step("Проверить, что результаты найдены по должности", () -> {
             searchVacancyPage.checkFirstFoundResult();
         });
-
-
     }
-
-
 }
