@@ -1,13 +1,16 @@
-package ui;
+package ui.tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import ui.tests.TestBase;
 
 import static io.qameta.allure.Allure.step;
 
 public class TestsForSiteHeadhunter extends TestBase {
     @Test
     @Tag("UI")
+    @DisplayName("Проверка текста для работодателя")
     public void checkTextForEmployers() {
         step("Открыть страницу", () -> {
             searchThingsOnSite.openPage();
@@ -21,6 +24,7 @@ public class TestsForSiteHeadhunter extends TestBase {
     }
     @Test
     @Tag("UI")
+    @DisplayName("Проверка текста для работодателя")
     public void checkTextForJobSeekers() {
         step("Открыть страницу", () -> {
             searchThingsOnSite.openPage();
@@ -34,6 +38,7 @@ public class TestsForSiteHeadhunter extends TestBase {
     }
     @Test
     @Tag("UI")
+    @DisplayName("Изменение языка на английский")
     public void switchLanguageToEnglish() {
         step("Открыть страницу", () -> {
             searchThingsOnSite.openPage();
@@ -48,6 +53,7 @@ public class TestsForSiteHeadhunter extends TestBase {
     }
     @Test
     @Tag("UI")
+    @DisplayName("Поиск вакансий по определенному параметру поиска")
     public void searchJobForQAAuto() {
         step("Открыть страницу", () -> {
             searchThingsOnSite.openPage();
@@ -61,6 +67,7 @@ public class TestsForSiteHeadhunter extends TestBase {
     }
     @Test
     @Tag("UI")
+    @DisplayName("Проверка вакансий для определенного города")
     public void chooseAnotherCity() {
         step("Открыть страницу", () -> {
             searchThingsOnSite.openPage();

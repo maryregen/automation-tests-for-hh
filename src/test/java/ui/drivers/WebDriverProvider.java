@@ -1,4 +1,4 @@
-package ui;
+package ui.drivers;
 
 import com.codeborne.selenide.Configuration;
 import ui.config.WebDriverConfig;
