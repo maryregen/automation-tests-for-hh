@@ -16,11 +16,11 @@ import java.net.URL;
 
 public class BrowserstackMobileDriver implements WebDriverProvider {
 
-    static AuthConfig authConfig = ConfigFactory.create(AuthConfig.class);
+    static AuthConfig authConfig = ConfigFactory.create(AuthConfig.class, System.getProperties());
 
-    static MobileConfig mobileConfig = ConfigFactory.create(MobileConfig.class);
+    static MobileConfig mobileConfig = ConfigFactory.create(MobileConfig.class, System.getProperties());
 
-    static ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class);
+    static ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class, System.getProperties());
 
     @Nonnull
     @Override

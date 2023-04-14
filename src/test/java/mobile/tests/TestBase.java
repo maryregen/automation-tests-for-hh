@@ -24,6 +24,7 @@ import static com.codeborne.selenide.Selenide.open;
         public static String deviceHost = System.getProperty("deviceHost");
         @BeforeAll
         static void beforeAll() {
+            Configuration.browserSize = null;
 
             if (deviceHost.equals("emulation")) {
                 Configuration.browser = EmulationMobileDriver.class.getName();
@@ -32,7 +33,6 @@ import static com.codeborne.selenide.Selenide.open;
                     Configuration.browser = BrowserstackMobileDriver.class.getName();
                 }
             }
-            Configuration.browserSize = null;
         }
 
         @BeforeEach
