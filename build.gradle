@@ -23,8 +23,8 @@ repositories {
 }
 
 dependencies {
-    testImplementation (
-            'com.codeborne:selenide:6.12.4',
+    testImplementation(
+            'com.codeborne:selenide:6.11.0',
             'org.junit.jupiter:junit-jupiter:5.9.2',
             "org.slf4j:slf4j-simple:2.0.6",
             'org.assertj:assertj-core:3.24.2',
@@ -55,19 +55,19 @@ test {
 }
 
 task ui_tests(type: Test) {
-    useJUnitPlatform{
+    useJUnitPlatform {
         includeTags("UI")
     }
 }
 
 task api_tests(type: Test) {
-    useJUnitPlatform{
+    useJUnitPlatform {
         includeTags("API")
     }
 }
 
 task mobile_tests(type: Test) {
-    useJUnitPlatform{
-                includeTags("MOBILE")
+    useJUnitPlatform {
+        includeTags("MOBILE")
     }
 }

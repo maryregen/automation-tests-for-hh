@@ -2,7 +2,9 @@ package api.specs;
 
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.http.ContentType;
+
 import static io.restassured.RestAssured.with;
+
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
@@ -41,7 +43,7 @@ public class RequestApiSpecs {
     public static RequestSpecification postNegotiationRequestSpec = with()
             .log()
             .all()
-            .header("Content-Type","multipart/form-data")
+            .header("Content-Type", "multipart/form-data")
             .contentType(ContentType.JSON)
             .baseUri(baseUri)
             .basePath("/negotiations")
