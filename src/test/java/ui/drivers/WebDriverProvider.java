@@ -29,6 +29,7 @@ public class WebDriverProvider {
         Configuration.baseUrl = config.getBaseUrl();
         Configuration.browserVersion = config.getBrowserVersion();
         Configuration.remote = config.getRemoteUrl();
+        Configuration.pageLoadTimeout = 300000;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
