@@ -7,7 +7,6 @@ import lombok.Data;
 public class NegotiationBodyRequestModel {
     @JsonProperty("vacancy_id")
     String vacancyId;
-
     @JsonProperty("resume_id")
     String resumeId;
     String message;

@@ -11,7 +11,6 @@ import static io.restassured.filter.log.LogDetail.BODY;
 import static io.restassured.filter.log.LogDetail.STATUS;
 
 public class ApiSpecs {
-
     public static final String baseUri = "https://api.hh.ru";
 
     // Request specifications
