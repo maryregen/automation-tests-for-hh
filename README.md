@@ -87,8 +87,8 @@ Allure-отчет включает в себя:
 
 ### Автоматизированные проверки API
 - [ ] Проверка статуса ответа метода vacancies
-- [ ] Поиск работодателя по определенным словам
-- [ ] Поиск вакансии по определенным словам
+- [ ] Поиск работодателя по определенным словам (параметризация ВкусВилл/СберМаркет)
+- [ ] Поиск вакансии по определенным словам (параметризация Продавец/Консультант)
 - [ ] Отклик на определенную вакансию без авторизации
 - [ ] Удаление комментариев соискателей
 
@@ -114,36 +114,64 @@ gradle clean mobile_tests -DdeviceHost=emulator
 ```
 
 ### Удаленный запуск тестов
+Выбираем опции Gradle в зависимости от типа запускаемых тестов: 
+* UI-тесты запускаем с передачей BROWSER_PLATFORM, BROWSER_VERSION, BROWSER_SIZE, REMOTE_URL
+* API-тесты запускаем без параметризации
+* Mobile-тесты запускаем с deviceHost (browserstack)
 
+Например, 
 ```
-export BROWSER_PLATFORM=$(echo "${BROWSER}" | awk '{print $1}')
-export BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
+./gradlew clean ui_tests -Dbrowser=CHROME -Dversion=112.0 -DwindowSize=1920x1080 -DremoteUrl=http://localhost:4444/wd/hub
+./gradlew clean api_tests 
+./gradlew clean mobile_tests -DdeviceHost=browserstack
+```
+```
+set -x 
 
-./gradlew clean ${TEST_TYPE}
-if ${TEST_TYPE}=ui_tests then
-  -Dbrowser=${BROWSER_PLATFORM} \
-  -Dversion=${BROWSER_VERSION} \
-  -DwindowSize=${BROWSER_SIZE} \
-  -DremoteUrl=${REMOTE_URL}
+echo "==> Running ${TEST_TYPE}..."
+
+gradle_opts=""
+
+case "$TEST_TYPE" in 
+  "ui_tests")
+    BROWSER_PLATFORM=$(echo "${BROWSER}" | awk '{print $1}')
+    BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
+
+    gradle_opts="-Denv=remote -Dbrowser=${BROWSER_PLATFORM} -Dversion=${BROWSER_VERSION} -DwindowSize=${BROWSER_SIZE} -DremoteUrl=${REMOTE_URL}"
+  ;;
+  "mobile_tests")
+    gradle_opts="-DdeviceHost=browserstack"
+  ;;
+  "api_tests")
+  ;;
+esac
+
+if [[ -n $gradle_opts ]] ; then
+  ./gradlew clean "$TEST_TYPE" $gradle_opts
+else
+  ./gradlew clean "$TEST_TYPE"
+fi
 ```
 
+> `${TEST_TYPE}` - тип запускаемых тестов (ui_tests, api_tests, mobile_tests).
+> 
 > `${BROWSER}` - комбинация браузера и версии (_по умолчанию - <code>chrome 100.0</code>_).
 >
 > `${BROWSER_PLATFORM}` - наименование браузера (_по умолчанию - <code>chrome</code>_).
 > 
 > `${BROWSER_VERSION}` - номер версии браузера (_по умолчанию - <code>100.0</code>_).
 > 
-> `${BROWSER_SIZE}` - размер окна браузера (_по умолчанию - <code>1366x768</code>_).
+> `${BROWSER_SIZE}` - размер окна браузера (_по умолчанию - <code>1290x1080</code>_).
 >
 > `${REMOTE_URL}` - адрес удаленного сервера, на котором будут запускаться тесты.
-> 
-> `${TEST_TYPE}` - тип запускаемых тестов (ui_tests, api_tests, mobile_tests).
 
 <a id="jenkins"></a>
 ## Запуск тестов в [Jenkins](https://jenkins.autotests.cloud/job/017-maryregen-java-automation-tests-for-hh/)
 
-Для запуска сборки необходимо перейти в раздел **Собрать с параметрами** и нажать кнопку **Собрать**. 
-Сборка с параметрами позволяет перед запуском изменить параметры для сборки (путем выбора из списка или прямым указанием значения).
+1. Для запуска сборки необходимо перейти в раздел **Собрать с параметрами** 
+2. Запуская ui-тесты, необходимо указать параметры для сборки (путем выбора из списка или прямым указанием значения) и в <code>TEST_TYPE</code> выбрать ui-tests. 
+3. Запуская api-тесты или mobile-тесты, можно оставить все предзаполненные поля, поменяв <code>TEST_TYPE</code> соответственно на api_tests или mobile_tests.
+4. Нажать кнопку **Собрать**.
 
 <p align="center">
 <img src="images/screenshots/JenkinsJob.png"/></a>
@@ -152,47 +180,71 @@ if ${TEST_TYPE}=ui_tests then
 <a id="allure"></a>
 ## Отчеты в [Allure Report](https://jenkins.autotests.cloud/job/017-maryregen-java-automation-tests-for-hh/16/allure/)
 
-### Основное окно
-
+### Прохождение UI-тестов
 <p align="center">
-<img src="images/screenshots/AllureOverview.png">
+<img src="images/screenshots/">
 </p>
 
-### Тесты
-
+### Прохождение API-тестов
 <p align="center">
-<img src="images/screenshots/AllureBehaviors.png">
+<img src="images/screenshots/AllureSuitsApi.png">
+</p>
+
+### Прохождение mobile-тестов
+<p align="center">
+<img src="images/screenshots/">
 </p>
 
 <a id="testops"></a>
 ## Интеграция с [Allure TestOps](https://allure.autotests.cloud/project/1846/dashboards) 
 
-### Тест-кейсы
+### Прохождение UI-тестов
 <p align="center">
-<img src="images/screenshots/AllureTestCases.png">
+<img src="images/screenshots/">
+</p>
+
+### Прохождение API-тестов
+<p align="center">
+<img src="images/screenshots/">
+</p>
+
+### Прохождение mobile-тестов
+<p align="center">
+<img src="images/screenshots/">
 </p>
 
 ### Пример мануального тест-кейса
 <p align="center">
-<img src="images/screenshots/AllureTestOpsManualTest.png">
+<img src="images/screenshots/TestOpsManualCases.png">
 </p>
 
 ### Пример запуска тест-кейсов
 <p align="center">
-<img src="images/screenshots/AllureTestOpsLaunches.png">
+<img src="images/screenshots/TestOpsLaunchApi.png">
 </p>
 
 <a id="jira"></a>
 ## Интеграция с [Jira](https://jira.autotests.cloud/browse/HOMEWORK-514) 
 <p align="center">
-<img src="images/screenshots/Jira.png">
+<img src="images/screenshots/">
 </p>
 
 <a id="telegram"></a>
 ## Уведомления в Telegram с использованием бота
 
-<p>
-<img src="images/screenshots/TelegramBot.png">
+### Уведомление о прохождении UI-тестов
+<p align="center">
+<img src="images/screenshots/">
+</p>
+
+### Уведомление о прохождении API-тестов
+<p align="center">
+<img src="images/screenshots/">
+</p>
+
+### Уведомление о прохождении mobile-тестов
+<p align="center">
+<img src="images/screenshots/">
 </p>
 
 <a id="selenoidvideo"></a>
