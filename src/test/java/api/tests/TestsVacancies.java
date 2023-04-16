@@ -20,7 +20,7 @@ public class TestsVacancies {
                     .when()
                     .get()
                     .then()
-                    .spec(OKResponseSpec);
+                    .spec(responseSpecCode200);
         });
     }
 
@@ -35,8 +35,9 @@ public class TestsVacancies {
                     .when()
                     .get()
                     .then()
-                    .spec(OKResponseSpec)
-                    .extract().as(EmployersListResponseModel.class);
+                    .spec(responseSpecCode200)
+                    .extract()
+                    .as(EmployersListResponseModel.class);
 
             VacancyResponseModel[] items = response.getItems();
             assertThat(items.length).isNotEqualTo(0);

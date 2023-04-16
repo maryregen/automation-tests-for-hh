@@ -22,17 +22,16 @@ public class TestsEmployers {
                     .when()
                     .get()
                     .then()
-                    .spec(OKResponseSpec)
-                    .extract().as(EmployersListResponseModel.class);
+                    .spec(responseSpecCode200)
+                    .extract()
+                    .as(EmployersListResponseModel.class);
 
-            VacancyResponseModel[] items = response.getItems();
-            assertThat(items.length).isNotEqualTo(0);
+            VacancyResponseModel[] vacancies = response.getItems();
 
-            if (items.length > 0) {
-                for (int i = 0; i < items.length - 1; i++) {
-                    assertThat(items[i].getName()).containsIgnoringCase(keyword);
-                }
+            for (VacancyResponseModel vacancy : vacancies) {
+                assertThat(vacancy.getName()).containsIgnoringCase(keyword);
             }
+            assertThat(vacancies.length).isNotEqualTo(0);
         });
     }
 }

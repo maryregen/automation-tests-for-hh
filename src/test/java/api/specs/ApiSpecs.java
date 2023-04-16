@@ -48,7 +48,7 @@ public class ApiSpecs {
             .filter(withCustomTemplates());
 
     // Response specifications
-    public static ResponseSpecification OKResponseSpec = new ResponseSpecBuilder()
+    public static ResponseSpecification responseSpecCode200 = new ResponseSpecBuilder()
         .log(STATUS)
         .log(BODY)
         .expectStatusCode(200)

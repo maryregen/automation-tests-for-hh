@@ -1,11 +1,14 @@
 package api.tests;
 
 import api.models.*;
+import io.restassured.http.Header;
+import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 
 import static api.specs.ApiSpecs.*;
 import static io.restassured.RestAssured.given;
 import static io.qameta.allure.Allure.step;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class TestsNegotiations {
 
@@ -28,13 +31,32 @@ public class TestsNegotiations {
         // Сейчас мы обрабатываем только 403: на указанную вакансию невозможно откликнуться по причине
         // отсутствия доступа к ней.
         step("Проверить статус ответа при отклике без авторизации", () -> {
-            given(postNegotiationRequestSpec)
-                .body(body)
-                .when()
-                .post()
-                .then()
-                // .spec(responseSpecCode201);
-                .spec(responseSpecCode403);
+            ForbiddenResponseModel response = given(postNegotiationRequestSpec)
+                    .body(body)
+                    .when()
+                    .post()
+                    .then()
+                    .spec(responseSpecCode403)
+                    .extract()
+                    .as(ForbiddenResponseModel.class);
+
+            for (ForbiddenErrorResponseModel error : response.getErrors()) {
+                assertThat(error.getType()).containsIgnoringCase("forbidden");
+            }
+
+            /*
+            String location = given(postNegotiationRequestSpec)
+                    .body(body)
+                    .when()
+                    .post()
+                    .then()
+                    .spec(responseSpecCode403)
+                    .extract()
+                    .response()
+                    .header("location");
+
+            assertThat(location).matches("^/negotiations/([0-9].+)");
+            */
         });
     }
 }
