@@ -25,6 +25,7 @@ public class TestsApplicantComments {
                     .when()
                     .delete(applicantId.toString() + "/" + commentId.toString())
                     .then()
+                    // .spec(responseSpecCode204)
                     .spec(responseSpecCode403);
         });
     }
