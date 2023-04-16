@@ -221,7 +221,7 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webd
 ### Прохождение UI-тестов
 
 <p align="center">
-<img src="images/screenshots/TestOpsLaunchUI">
+<img src="images/screenshots/TestOpsLaunchUI.png">
 </p>
 
 ### Пример мануального тест-кейса
