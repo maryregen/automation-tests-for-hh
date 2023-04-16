@@ -140,9 +140,9 @@ Allure-отчет включает в себя:
 
 ### Удаленный запуск тестов
 
-Выбираем опции Gradle в зависимости от типа запускаемых тестов:
-
-* UI-тесты запускаем `BROWSER`, `BROWSER_SIZE`, `REMOTE_URL`
+Выбираем опции Gradle в зависимости от типа запускаемых тестов: 
+* UI-тесты запускаем с передачей <code>BROWSER_PLATFORM</code>, <code>BROWSER_VERSION</code>, 
+<code>BROWSER_SIZE</code>, <code>REMOTE_URL</code>
 * API-тесты запускаем без параметризации
 * Mobile-тесты запускаем с `deviceHost` (`browserstack`)
 
@@ -242,10 +242,14 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webd
 <img src="images/screenshots/TestOpsManualCases.png">
 </p>
 
-### Пример запуска тест-кейсов
-
+### Прохождение API-тестов
 <p align="center">
 <img src="images/screenshots/TestOpsLaunchApi.png">
+</p>
+
+### Прохождение mobile-тестов
+<p align="center">
+<img src="images/screenshots/">
 </p>
 
 <a id="jira"></a>
