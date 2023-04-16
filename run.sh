@@ -11,6 +11,8 @@
 # ./gradlew clean ui_tests -Dbrowser=CHROME -Dversion=112.0 -DwindowSize=1920x1080 -DremoteUrl=http://localhost:4444/wd/hub
 # ./gradlew clean mobile_tests -DdeviceHost=browserstack
 
+set -x 
+
 echo "==> Running ${TEST_TYPE}..."
 
 gradle_opts=""
