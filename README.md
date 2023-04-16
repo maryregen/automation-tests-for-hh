@@ -177,8 +177,6 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" bash run.sh ui_tests
 BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webdriver.tld:4444/wd/hub" bash run.sh ui_tests
 ```
 
-> > > > > > > 9344233 (Added run.sh instruction)
-
 <a id="jenkins"></a>
 
 ## Запуск тестов в [Jenkins](https://jenkins.autotests.cloud/job/017-maryregen-java-automation-tests-for-hh/)
