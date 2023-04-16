@@ -1,6 +1,7 @@
 package mobile.tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import mobile.drivers.BrowserstackMobileDriver;
 import mobile.drivers.EmulationMobileDriver;
@@ -8,18 +9,20 @@ import mobile.helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import mobile.pages.ChooseUserPage;
 import mobile.pages.MainPage;
+import mobile.pages.ResultVacancyPage;
 import mobile.pages.SearchVacancyPage;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
-import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
-    public class TestBase {
+public class TestBase {
         ChooseUserPage chooseUserPage = new ChooseUserPage();
         MainPage mainPage = new MainPage();
         SearchVacancyPage searchVacancyPage = new SearchVacancyPage();
+
+        ResultVacancyPage resultVacancyPage = new ResultVacancyPage();
 
         public static String deviceHost = System.getProperty("deviceHost");
         @BeforeAll
@@ -44,9 +47,12 @@ import static com.codeborne.selenide.Selenide.open;
         @AfterEach
         void afterEach() {
 
-            Attach.pageSource();
+            //if (deviceHost.equals("browserstack")) {
+            //Attach.pageSource();
+//                String sessionId = Selenide.sessionId().toString();
+//                Attach.addVideo(sessionId);
+            //}
 
             closeWebDriver();
         }
-
     }

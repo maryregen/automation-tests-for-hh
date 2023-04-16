@@ -6,13 +6,13 @@ plugins {
 
 allure {
     report {
-        version.set("2.20.1") //версия Allure Report (https://github.com/allure-framework/allure2)
+        version.set("2.21.0") //версия Allure Report (https://github.com/allure-framework/allure2)
     }
     adapter {
-        aspectjWeaver.set(true) // обработка аннотации @Step
+        // aspectjWeaver.set(true) // обработка аннотации @Step
         frameworks {
             junit5 {
-                adapterVersion.set("2.20.1") //версия Allure JUnit5 (https://github.com/allure-framework/allure-java)
+                adapterVersion.set("2.21.0") //версия Allure JUnit5 (https://github.com/allure-framework/allure-java)
             }
         }
     }
@@ -24,7 +24,7 @@ repositories {
 
 dependencies {
     testImplementation (
-            'com.codeborne:selenide:6.11.0',
+            'com.codeborne:selenide:6.12.4',
             'org.junit.jupiter:junit-jupiter:5.9.2',
             "org.slf4j:slf4j-simple:2.0.6",
             'org.assertj:assertj-core:3.24.2',
@@ -36,7 +36,7 @@ dependencies {
             'io.qameta.allure:allure-rest-assured:2.21.0',
             'commons-io:commons-io:2.11.0',
             'io.appium:java-client:8.3.0',
-            "org.projectlombok:lombok:1.18.24",
+            "org.projectlombok:lombok:1.18.26",
     )
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 }
@@ -68,6 +68,6 @@ task api_tests(type: Test) {
 
 task mobile_tests(type: Test) {
     useJUnitPlatform{
-        includeTags("MOBILE")
+                includeTags("MOBILE")
     }
 }

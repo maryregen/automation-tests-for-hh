@@ -6,9 +6,7 @@ import static io.appium.java_client.AppiumBy.id;
 
 public class MainPage {
 
-    String header = "Вакансии для вас";
-
-    public MainPage checkHeader(){
+    public MainPage checkHeader(String header){
         $(id("ru.hh.android:id/cell_section_header_large_narrow_text_view"))
                 .shouldHave(text(header));
         return this;
