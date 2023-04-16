@@ -180,16 +180,10 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webd
 
 ## Запуск тестов в [Jenkins](https://jenkins.autotests.cloud/job/017-maryregen-java-automation-tests-for-hh/)
 
-<<<<<<< HEAD
 1. Для запуска сборки необходимо перейти в раздел **Собрать с параметрами** 
 2. Запуская ui-тесты, необходимо указать параметры для сборки (путем выбора из списка или прямым указанием значения) и в <code>TEST_TYPE</code> выбрать ui-tests. 
 3. Запуская api-тесты или mobile-тесты, можно оставить все предзаполненные поля, поменяв <code>TEST_TYPE</code> соответственно на api_tests или mobile_tests.
 4. Нажать кнопку **Собрать**.
-=======
-Для запуска сборки необходимо перейти в раздел **Собрать с параметрами** и нажать кнопку **Собрать**.
-Сборка с параметрами позволяет перед запуском изменить параметры для сборки (путем выбора из списка или прямым указанием
-значения).
->>>>>>> 9344233 (Added run.sh instruction)
 
 <p align="center">
 <img src="images/screenshots/JenkinsJob.png"/></a>
@@ -218,12 +212,7 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webd
 
 ## Интеграция с [Allure TestOps](https://allure.autotests.cloud/project/1846/dashboards)
 
-<<<<<<< HEAD
 ### Прохождение UI-тестов
-=======
-### Тест-кейсы
-
->>>>>>> 9344233 (Added run.sh instruction)
 <p align="center">
 <img src="images/screenshots/">
 </p>
