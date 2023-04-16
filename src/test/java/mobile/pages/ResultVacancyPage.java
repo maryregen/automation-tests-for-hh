@@ -1,19 +1,19 @@
 package mobile.pages;
 
+import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$$;
 import static io.appium.java_client.AppiumBy.id;
 
 public class ResultVacancyPage {
 
-    public ResultVacancyPage checkFirstFoundProfessionResult(String profession){
-        $$(id("ru.hh.android:id/cell_vacancy_card_text_view_job_position")).first().shouldHave(text(profession));
-        return this;
+    public SelenideElement getFirstResult() {
+        return $$(id("ru.hh.android:id/cell_vacancy_card_text_view_job_position")).first();
     }
 
-    public ResultVacancyPage checkResponseButtonText(String responseButtonText){
-        $$(id("ru.hh.android:id/cell_vacancy_card_button_response")).first().shouldHave(text(responseButtonText));
-        return this;
+    public SelenideElement getVacancyCardResponseButton() {
+        return $$(id("ru.hh.android:id/cell_vacancy_card_button_response")).first();
     }
-
 }

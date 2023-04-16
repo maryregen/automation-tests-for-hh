@@ -15,7 +15,7 @@ import java.net.URL;
 
 import static io.appium.java_client.remote.AutomationName.ANDROID_UIAUTOMATOR2;
 
-public class EmulationMobileDriver implements WebDriverProvider {
+public class EmulatorMobileDriver implements WebDriverProvider {
 
     static MobileConfig mobileConfig = ConfigFactory
             .create(MobileConfig.class, System.getProperties());
