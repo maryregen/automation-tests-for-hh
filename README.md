@@ -199,7 +199,7 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webd
 ### Прохождение UI-тестов
 
 <p align="center">
-<img src="images/screenshots/">
+<img src="images/screenshots/AllureSuitsUI.png">
 </p>
 
 ### Прохождение API-тестов
@@ -211,7 +211,7 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webd
 ### Прохождение mobile-тестов
 
 <p align="center">
-<img src="images/screenshots/">
+<img src="images/screenshots/AllureSuitsMobile.png">
 </p>
 
 <a id="testops"></a>
@@ -221,7 +221,7 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webd
 ### Прохождение UI-тестов
 
 <p align="center">
-<img src="images/screenshots/">
+<img src="images/screenshots/TestOpsLaunchUI">
 </p>
 
 ### Пример мануального тест-кейса
@@ -238,7 +238,7 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webd
 ### Прохождение mobile-тестов
 
 <p align="center">
-<img src="images/screenshots/">
+<img src="images/screenshots/TestOpsLaunchMobile.png">
 </p>
 
 <a id="jira"></a>
@@ -246,7 +246,7 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webd
 ## Интеграция с [Jira](https://jira.autotests.cloud/browse/HOMEWORK-514)
 
 <p align="center">
-<img src="images/screenshots/">
+<img src="images/screenshots/JiraIssue.png">
 </p>
 
 <a id="telegram"></a>
@@ -256,19 +256,19 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webd
 ### Уведомление о прохождении UI-тестов
 
 <p align="center">
-<img src="images/screenshots/">
+<img src="images/screenshots/TelegramBotUI.png">
 </p>
 
 ### Уведомление о прохождении API-тестов
 
 <p align="center">
-<img src="images/screenshots/">
+<img src="images/screenshots/TelegramBotApi.png">
 </p>
 
 ### Уведомление о прохождении mobile-тестов
 
 <p align="center">
-<img src="images/screenshots/">
+<img src="images/screenshots/TelegramBotMobile.png">
 </p>
 
 <a id="selenoidvideo"></a>
