@@ -10,7 +10,7 @@ import static api.helpers.CustomApiListener.withCustomTemplates;
 import static io.restassured.filter.log.LogDetail.BODY;
 import static io.restassured.filter.log.LogDetail.STATUS;
 
-public class ApiSpecs {
+public class RequestApiSpecs {
     public static final String baseUri = "https://api.hh.ru";
 
     // Request specifications
@@ -46,31 +46,6 @@ public class ApiSpecs {
             .baseUri(baseUri)
             .basePath("/negotiations")
             .filter(withCustomTemplates());
-
-    // Response specifications
-    public static ResponseSpecification responseSpecCode200 = new ResponseSpecBuilder()
-        .log(STATUS)
-        .log(BODY)
-        .expectStatusCode(200)
-        .build();
-
-    public static ResponseSpecification responseSpecCode201 = new ResponseSpecBuilder()
-            .log(STATUS)
-            .log(BODY)
-            .expectStatusCode(201)
-            .build();
-
-    public static ResponseSpecification responseSpecCode204 = new ResponseSpecBuilder()
-            .log(STATUS)
-            .log(BODY)
-            .expectStatusCode(204)
-            .build();
-
-    public static ResponseSpecification responseSpecCode403 = new ResponseSpecBuilder()
-            .log(STATUS)
-            .log(BODY)
-            .expectStatusCode(403)
-            .build();
 }
 
 

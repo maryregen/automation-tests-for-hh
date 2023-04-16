@@ -1,11 +1,10 @@
 package api.tests;
 
 import api.models.*;
-import io.restassured.http.Header;
-import io.restassured.response.Response;
 import org.junit.jupiter.api.*;
 
-import static api.specs.ApiSpecs.*;
+import static api.specs.RequestApiSpecs.*;
+import static api.specs.ResponseApiSpecs.*;
 import static io.restassured.RestAssured.given;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;

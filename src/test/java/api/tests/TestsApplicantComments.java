@@ -6,7 +6,8 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static api.specs.ApiSpecs.*;
+import static api.specs.RequestApiSpecs.*;
+import static api.specs.ResponseApiSpecs.*;
 import static io.restassured.RestAssured.given;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
