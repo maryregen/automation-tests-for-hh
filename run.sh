@@ -32,7 +32,7 @@ case "$TEST_TYPE" in
   ;;
 esac
 
-if [ -n $gradle_opts ] ; then
+if [[ -n $gradle_opts ]] ; then
   ./gradlew clean "$TEST_TYPE" "$gradle_opts"
 else
   ./gradlew clean "$TEST_TYPE"
