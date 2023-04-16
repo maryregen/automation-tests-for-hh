@@ -45,8 +45,7 @@ public class TestBase {
     public void setUp() {
         this.addListener();
         open();
-        mainPage = loginPage.close();
-        mainPage.denyNotifications();
+        mainPage = loginPage.close().denyNotifications();
     }
 
     @AfterEach
