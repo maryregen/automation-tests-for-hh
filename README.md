@@ -224,18 +224,6 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webd
 <img src="images/screenshots/">
 </p>
 
-### Прохождение API-тестов
-
-<p align="center">
-<img src="images/screenshots/">
-</p>
-
-### Прохождение mobile-тестов
-
-<p align="center">
-<img src="images/screenshots/">
-</p>
-
 ### Пример мануального тест-кейса
 
 <p align="center">
@@ -248,6 +236,7 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webd
 </p>
 
 ### Прохождение mobile-тестов
+
 <p align="center">
 <img src="images/screenshots/">
 </p>
