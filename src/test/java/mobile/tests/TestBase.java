@@ -29,7 +29,7 @@ public class TestBase {
         static void beforeAll() {
             Configuration.browserSize = null;
 
-            if (deviceHost.equals("emulation")) {
+            if (deviceHost.equals("emulator")) {
                 Configuration.browser = EmulationMobileDriver.class.getName();
             } else {
                 if (deviceHost.equals("browserstack")) {

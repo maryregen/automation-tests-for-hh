@@ -1,16 +1,17 @@
-<h1 >Проект автоматизации для <a href="https://hh.ru/ ">hh.ru</a></h1>
+<h1 >Проект по автоматизации тестирования для <a href="https://hh.ru/ ">HeadHunter</a></h1>
 
 ## Содержание
 
 * <a href="#tools">Технологии и инструменты</a>
 * <a href="#cases">Реализованные проверки</a>
 * <a href="#console">Запуск тестов из терминала</a>
-* <a href="#jenkins">Запуск тестов в Jenkins</a>
+* <a href="#jenkins">Запуск тестов в Jenkins</a>r
 * <a href="#allure">Отчеты в Allure</a>
 * <a href="#testops">Интеграция с Allure TestOps</a>
 * <a href="#testops">Интеграция с Jira</a>
 * <a href="#telegram">Уведомления в Telegram с использованием бота</a>
-* <a href="#video">Пример прогона теста в Selenoid</a>
+* <a href="#selenoidvideo">Пример прогона теста в Selenoid</a>
+* <a href="#browserstackvideo">Пример прогона теста в Browserstack</a>
 
 <a id="tools"></a>
 ## Технологии и инструменты
@@ -26,12 +27,18 @@
 <img width="6%" title="GitHub" src="images/logo/GitHub.png">
 <img width="6%" title="Jenkins" src="images/logo/Jenkins.png">
 <img width="6%" title="Allure TestOps" src="images/logo/AllureTestOps.svg">
+<img width="6%" title="REST Assured" src="images/logo/RestAssured.png">
+<img width="6%" title="Android Studio" src="images/logo/AndroidStudio.svg">
+<img width="6%" title="Appium" src="images/logo/Appium.svg">
+<img width="6%" title="Appium Inspector" src="images/logo/Inspector.png">
+<img width="6%" title="Browserstack" src="images/logo/Browserstack.svg">
 </p>
+Данный проект состоит из автоматизированных UI-тестов, тестов API и мобильных тестов android-приложения для продукта HeadHunter. 
 
-Автотесты написаны на <code>Java</code> с использованием <code>JUnit 5</code> и <code>Gradle</code>.
-Для UI-тестов использован фреймворк [Selenide](https://selenide.org/).
-Запуск тестов можно осуществлять локально или с помощью [Selenoid](https://aerokube.com/selenoid/).
-Также реализована сборка в <code>Jenkins</code> с формированием Allure-отчета и отправкой уведомления с результатами в <code>Telegram</code> после завершения прогона.
+Автотесты написаны на <code>Java</code> с использованием <code>JUnit 5</code> и <code>Gradle</code>, применены различные библиотеки и фреймворки. 
+
+Также реализована сборка в <code>Jenkins</code> с формированием Allure-отчета и отправкой уведомления с результатами в <code>Telegram</code> после завершения прогона. 
+В качестве системы управления тестированием выбран <code>Allure TestOps</code>. 
 
 Allure-отчет включает в себя:
 * шаги выполнения тестов;
@@ -39,6 +46,20 @@ Allure-отчет включает в себя:
 * Page Source;
 * логи браузерной консоли;
 * видео выполнения автотеста.
+
+### Для UI-тестов
+* при написании использован фреймворк [Selenide](https://selenide.org/)
+* запуск осуществляется локально или с помощью [Selenoid](https://aerokube.com/selenoid/).
+
+### Для API-тестов 
+* при написании использована библиотека [REST Assured](https://rest-assured.io)
+* для сокращения шаблонного кода применена библиотека [Lombok](https://projectlombok.org/)
+
+### Для mobile-тестов 
+* при написании использован фреймворк с открытым исходным кодом [Appium](https://appium.io) 
+* для просмотра и взаимодействия с элементами интерфейса выбран [Appium Inspector](https://github.com/appium/appium-inspector) 
+* запуск может осуществляться локально в эмуляторе [Android Studio](https://developer.android.com/studio)
+* удаленный запуск осуществляется с помощью фермы реальных мобильных устройств [Browserstack](https://app-automate.browserstack.com/)
 
 <a id="cases"></a>
 ## Реализованные проверки
@@ -49,6 +70,8 @@ Allure-отчет включает в себя:
 - [ ] При смене языка на "англйиский" текст на страницу меняет язык 
 - [ ] При поиске конкретных вакансий в выдаче показываются только нужные результаты 
 - [ ] При смене города в выдаче показываются только вакансии в данном городе
+- [ ] 
+- [ ]
 
 ### Мануальные проверки 
 - [ ] Фильтрация по параметру "за сутки" в расширенном фильтре 
@@ -58,17 +81,20 @@ Allure-отчет включает в себя:
 - [ ] Проверка статуса ответа метода vacancies
 - [ ] Поиск вакансии по определенным словам
 - [ ] 403 Forbidden при отклике на определенную вакансию без авторизации
+- [ ]
+- [ ]
 
 ### Автоматизированные проверки MOBILE APP 
 - [ ] Проверка заголовка главной страницы с вакансиями
 - [ ] Поиск вакансий по заданному параметру
+- [ ] Вакансия содержит кнопку 'Откликнуться'
 
 <a id="console"></a>
-##  Запуск тестов из терминала
-### Локальный запуск тестов
+##  Запуск тестов
+### Локальный запуск тестов 
 #### Для UI-тестов
 ```
-gradle clean ui_tests 
+gradle clean ui_tests -Denv=local
 ```
 #### Для API-тестов
 ```
@@ -76,7 +102,7 @@ gradle clean api_tests
 ```
 #### Для MOBILE-тестов
 ```
-gradle clean mobile_tests 
+gradle clean mobile_tests -DdeviceHost=emulator
 ```
 
 ### Удаленный запуск тестов
@@ -85,7 +111,8 @@ gradle clean mobile_tests
 export BROWSER_PLATFORM=$(echo "${BROWSER}" | awk '{print $1}')
 export BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
 
-./gradlew clean test \
+./gradlew clean ${TEST_TYPE}
+if ${TEST_TYPE}=ui_tests then
   -Dbrowser=${BROWSER_PLATFORM} \
   -Dversion=${BROWSER_VERSION} \
   -DwindowSize=${BROWSER_SIZE} \
@@ -101,10 +128,13 @@ export BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
 > `${BROWSER_SIZE}` - размер окна браузера (_по умолчанию - <code>1366x768</code>_).
 >
 > `${REMOTE_URL}` - адрес удаленного сервера, на котором будут запускаться тесты.
+> 
+> `${TEST_TYPE}` - тип запускаемых тестов (ui_tests, api_tests, mobile_tests).
 
 <a id="jenkins"></a>
-## Запуск тестов в Jenkins
+## Запуск тестов в [Jenkins](https://jenkins.autotests.cloud/job/017-maryregen-java-automation-tests-for-hh/)
 
+> Для запуска сборки необходимо перейти в раздел Собрать с параметрами и нажать кнопку Собрать. 
 > Сборка с параметрами позволяет перед запуском изменить параметры для сборки (путем выбора из списка или прямым указанием значения).
 
 <p align="center">
@@ -112,7 +142,7 @@ export BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
 </p>
 
 <a id="allure"></a>
-## Отчеты в Allure
+## Отчеты в [Allure Report](https://jenkins.autotests.cloud/job/017-maryregen-java-automation-tests-for-hh/16/allure/)
 
 ### Основное окно
 
@@ -127,7 +157,7 @@ export BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
 </p>
 
 <a id="testops"></a>
-## Интеграция с Allure TestOps 
+## Интеграция с [Allure TestOps](https://allure.autotests.cloud/project/1846/dashboards) 
 
 ### Тест-кейсы
 <p align="center">
@@ -145,7 +175,7 @@ export BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
 </p>
 
 <a id="jira"></a>
-## Интеграция с Jira 
+## Интеграция с [Jira](https://jira.autotests.cloud/browse/HOMEWORK-514) 
 <p align="center">
 <img src="images/screenshots/Jira.png">
 </p>
@@ -157,10 +187,18 @@ export BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
 <img src="images/screenshots/TelegramBot.png">
 </p>
 
-<a id="video"></a>
-## Пример прогона теста в Selenoid
+<a id="selenoidvideo"></a>
+## Пример прогона UI-теста в Selenoid
 
 > К каждому тесту в отчете прилагается видео
 <p align="center">
   <img src="images/video/VideoGif.gif">
+</p>
+
+<a id="browserstackvideo"></a>
+## Пример прогона mobile-теста в Browserstack
+
+> К каждому тесту в отчете прилагается видео
+<p align="center">
+  <img src="images/video/MobileVideoGif.gif">
 </p>
