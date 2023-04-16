@@ -9,7 +9,7 @@ import static io.qameta.allure.Allure.step;
 
 public class TestsNegotiations {
 
-    TestData testData = new TestData();
+    private TestData testData = new TestData();
 
     @Tag("API")
     @DisplayName("Отклик на определенную вакансию без авторизации")
