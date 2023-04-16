@@ -20,11 +20,7 @@ public class TestsMain extends TestBase {
         MainPage mainPage = MainPage.openPage();
         mainPage.changeLocale(locale);
 
-        ApplicantMainPage applicantPage = mainPage.clickApplicantLink();
-
-        step("Страница должна содержать текст для соискателя на английском языке", () -> {
-            applicantPage.getIndexTitle().shouldHave(text(indexTitle));
-        });
+        mainPage.clickApplicantLink().checkIndexTitle(indexTitle);
     }
 
     @Test
@@ -35,11 +31,9 @@ public class TestsMain extends TestBase {
         String match = "Работа в компаниях Казани";
 
         MainPage mainPage = MainPage.openPage();
-        mainPage.changeRegion(search);
-        ApplicantMainPage applicantPage = mainPage.clickApplicantLink();
-
-        step("Проверить, что вакансии показываются именно для города Казань", () -> {
-            applicantPage.getWorkInCompanyTitle().shouldHave(text(match));
-        });
+        mainPage.clickApplicantLink()
+                .changeRegion(search)
+                .clickApplicantLink()
+                .checkWorkInCompanyTitle(match);
     }
 }

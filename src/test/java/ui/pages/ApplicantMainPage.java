@@ -1,7 +1,6 @@
 package ui.pages;
 
 import com.codeborne.selenide.SelenideElement;
-import com.sun.tools.javac.Main;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
@@ -14,11 +13,15 @@ public class ApplicantMainPage extends MainPage {
         return page(ApplicantSearchPage.class);
     }
 
-    public SelenideElement getIndexTitle() {
-        return $("h3[data-qa='bloko-header-3']");
+    @Step("Страница должна содержать текст для соискателя")
+    public ApplicantMainPage checkIndexTitle(String title) {
+        $("h3[data-qa='bloko-header-3']").shouldHave(text(title));
+        return this;
     }
 
-    public SelenideElement getWorkInCompanyTitle() {
-        return $("a[data-qa='index__work-in-company-header']");
+    @Step("Проверить, что вакансии показываются именно для города {0}")
+    public ApplicantMainPage checkWorkInCompanyTitle(String title) {
+        $("a[data-qa='index__work-in-company-header']").shouldHave(text(title));
+        return this;
     }
 }

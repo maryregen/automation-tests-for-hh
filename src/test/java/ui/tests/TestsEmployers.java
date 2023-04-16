@@ -17,10 +17,6 @@ public class TestsEmployers extends TestBase {
         String indexTitle = "Разместите вакансию на hh.ru";
 
         MainPage mainPage = MainPage.openPage();
-        EmployerMainPage employerPage = mainPage.clickEmployerLink();
-
-        step("Страница должна сожержать текст для работодателя", () -> {
-            employerPage.getIndexTitle().shouldHave(text(indexTitle));
-        });
+        mainPage.clickEmployerLink().checkIndexTitle(indexTitle);
     }
 }
