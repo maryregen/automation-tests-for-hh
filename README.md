@@ -123,23 +123,25 @@ Allure-отчет включает в себя:
 #### Для UI-тестов
 
 ```
-gradle clean ui_tests -Denv=local
+./gradlew clean ui_tests -Denv=local
 ```
 
 #### Для API-тестов
 
 ```
-gradle clean api_tests 
+./gradlew clean api_tests 
 ```
 
 #### Для MOBILE-тестов
 
 ```
-gradle clean mobile_tests -DdeviceHost=emulator
+./gradlew clean mobile_tests -DdeviceHost=emulator
 ```
 
 ### Удаленный запуск тестов
-Выбираем опции Gradle в зависимости от типа запускаемых тестов: 
+
+Выбираем опции Gradle в зависимости от типа запускаемых тестов:
+
 * UI-тесты запускаем `BROWSER`, `BROWSER_SIZE`, `REMOTE_URL`
 * API-тесты запускаем без параметризации
 * Mobile-тесты запускаем с `deviceHost` (`browserstack`)
@@ -174,15 +176,18 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" bash run.sh ui_tests
 ```
 BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webdriver.tld:4444/wd/hub" bash run.sh ui_tests
 ```
->>>>>>> 9344233 (Added run.sh instruction)
+
+> > > > > > > 9344233 (Added run.sh instruction)
 
 <a id="jenkins"></a>
 
 ## Запуск тестов в [Jenkins](https://jenkins.autotests.cloud/job/017-maryregen-java-automation-tests-for-hh/)
 
-1. Для запуска сборки необходимо перейти в раздел **Собрать с параметрами** 
-2. Запуская ui-тесты, необходимо указать параметры для сборки (путем выбора из списка или прямым указанием значения) и в <code>TEST_TYPE</code> выбрать ui-tests. 
-3. Запуская api-тесты или mobile-тесты, можно оставить все предзаполненные поля, поменяв <code>TEST_TYPE</code> соответственно на api_tests или mobile_tests.
+1. Для запуска сборки необходимо перейти в раздел **Собрать с параметрами**
+2. Запуская ui-тесты, необходимо указать параметры для сборки (путем выбора из списка или прямым указанием значения) и
+   в <code>TEST_TYPE</code> выбрать ui-tests.
+3. Запуская api-тесты или mobile-тесты, можно оставить все предзаполненные поля, поменяв <code>TEST_TYPE</code>
+   соответственно на api_tests или mobile_tests.
 4. Нажать кнопку **Собрать**.
 
 <p align="center">
@@ -194,16 +199,19 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webd
 ## Отчеты в [Allure Report](https://jenkins.autotests.cloud/job/017-maryregen-java-automation-tests-for-hh/16/allure/)
 
 ### Прохождение UI-тестов
+
 <p align="center">
 <img src="images/screenshots/">
 </p>
 
 ### Прохождение API-тестов
+
 <p align="center">
 <img src="images/screenshots/AllureSuitsApi.png">
 </p>
 
 ### Прохождение mobile-тестов
+
 <p align="center">
 <img src="images/screenshots/">
 </p>
@@ -213,16 +221,19 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webd
 ## Интеграция с [Allure TestOps](https://allure.autotests.cloud/project/1846/dashboards)
 
 ### Прохождение UI-тестов
+
 <p align="center">
 <img src="images/screenshots/">
 </p>
 
 ### Прохождение API-тестов
+
 <p align="center">
 <img src="images/screenshots/">
 </p>
 
 ### Прохождение mobile-тестов
+
 <p align="center">
 <img src="images/screenshots/">
 </p>
@@ -252,16 +263,19 @@ BROWSER="chrome 112.0" BROWSER_SIZE="1920x1080" REMOTE_URL="http://selenium.webd
 ## Уведомления в Telegram с использованием бота
 
 ### Уведомление о прохождении UI-тестов
+
 <p align="center">
 <img src="images/screenshots/">
 </p>
 
 ### Уведомление о прохождении API-тестов
+
 <p align="center">
 <img src="images/screenshots/">
 </p>
 
 ### Уведомление о прохождении mobile-тестов
+
 <p align="center">
 <img src="images/screenshots/">
 </p>
