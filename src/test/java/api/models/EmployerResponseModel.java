@@ -5,8 +5,6 @@ import lombok.Data;
 
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CreateResponseItemsModel {
+public class EmployerResponseModel {
     String name;
-    CreateResponseItemsAreaModel area;
-
 }
