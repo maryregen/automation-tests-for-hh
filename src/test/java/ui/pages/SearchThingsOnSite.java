@@ -7,7 +7,6 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class SearchThingsOnSite {
     //String url = "https://hh.ru";
-    String text = "QA инженер автоматизация";
     String textForEmployers = "Разместите вакансию на hh.ru";
     String textForJobSeekers = "Работа найдётся для каждого";
     String textForJobSeekersEng = "There's a job for everyone";
@@ -19,14 +18,17 @@ public class SearchThingsOnSite {
         open("/");
         return this;
     }
-    public SearchThingsOnSite inputTextToSearchArea() {
+    public SearchThingsOnSite inputTextToSearchArea(String text) {
 
         $("[data-qa='search-input']").setValue(text).pressEnter();
         return this;
     }
-    public SearchThingsOnSite findResults() {
-
-        $("h1[data-qa='bloko-header-3']").shouldHave(text(text));
+    public SearchThingsOnSite findVacanciesResults(String text) {
+        $("div[data-qa='vacancies-search-header'] h1[data-qa='bloko-header-3']").shouldHave(text(text));
+        return this;
+    }
+    public SearchThingsOnSite findCatalogResults(String text) {
+        $("h1[data-qa='vacancies-catalog-header']").shouldHave(text(text));
         return this;
     }
     public SearchThingsOnSite clickButtonForEmployers() {

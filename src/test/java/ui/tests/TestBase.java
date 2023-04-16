@@ -2,6 +2,7 @@ package ui.tests;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import org.junit.jupiter.api.AfterEach;
 import ui.drivers.WebDriverProvider;
 import ui.pages.SearchThingsOnSite;
 import ui.helpers.Attachments;
@@ -26,8 +27,8 @@ public class TestBase {
         Selenide.clearBrowserCookies();
     }
 
-    @AfterAll
-    static void addAttachments() {
+    @AfterEach
+    void addAttachments() {
         Attachments.screenshotAs("Last screenshot");
         Attachments.pageSource();
         Attachments.browserConsoleLogs();

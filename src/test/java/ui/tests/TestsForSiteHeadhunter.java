@@ -52,18 +52,55 @@ public class TestsForSiteHeadhunter extends TestBase {
     }
     @Test
     @Tag("UI")
-    @DisplayName("Поиск вакансий по определенному параметру поиска")
-    public void searchJobForQAAuto() {
+    @DisplayName("Поиск вакансий по профессии")
+    public void searchJobForProfession() {
+        String text = "QA инженер автоматизация";
+
         step("Открыть страницу", () -> {
             searchThingsOnSite.openPage();
         });
         step("Ввести текст в область поиска", () -> {
-            searchThingsOnSite.inputTextToSearchArea();
+            searchThingsOnSite.inputTextToSearchArea(text);
         });
         step("Убедиться, что найдены вакансии именно для QA", () -> {
-            searchThingsOnSite.findResults();
+            searchThingsOnSite.findVacanciesResults(text);
         });
     }
+
+    @Test
+    @Tag("UI")
+    @DisplayName("Поиск должности в каталоге")
+    public void searchJobForPosition() {
+        String position = "Старший системный администратор";
+        String header = "Работа старшим системным администратором";
+
+        step("Открыть страницу", () -> {
+            searchThingsOnSite.openPage();
+        });
+        step("Ввести текст в область поиска", () -> {
+            searchThingsOnSite.inputTextToSearchArea(position);
+        });
+        step("Убедиться, что найдены вакансии по позиции старшего системного администратора", () -> {
+            searchThingsOnSite.findCatalogResults(header);
+        });
+    }
+
+    @Test
+    @Tag("UI")
+    @DisplayName("Поиск вакансий по имени компании")
+    public void searchJobForCompany() {
+        String text = "Яндекс";
+        step("Открыть страницу", () -> {
+            searchThingsOnSite.openPage();
+        });
+        step("Ввести текст в область поиска", () -> {
+            searchThingsOnSite.inputTextToSearchArea(text);
+        });
+        step("Убедиться, что найдены вакансии именно от компании Яндекс", () -> {
+            searchThingsOnSite.findVacanciesResults(text);
+        });
+    }
+
     @Test
     @Tag("UI")
     @DisplayName("Проверка вакансий для определенного города")
