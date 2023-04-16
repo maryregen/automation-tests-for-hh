@@ -10,29 +10,58 @@
 # ./gradlew clean api_tests
 # ./gradlew clean ui_tests -Dbrowser=CHROME -Dversion=112.0 -DwindowSize=1920x1080 -DremoteUrl=http://localhost:4444/wd/hub
 # ./gradlew clean mobile_tests -DdeviceHost=browserstack
+################################################################################
 
-set -x 
+set -x
+
+################################################################################
+
+TEST_TYPE="$1"
+GRADLE_OPTS="${GRADLE_OPTS}"
+
+################################################################################
+
+if [[ -z $TEST_TYPE ]] ; then
+    echo "Error: TEST_TYPE must be set" >&2
+    exit 1
+fi
 
 echo "==> Running ${TEST_TYPE}..."
 
-gradle_opts=""
-
 case "$TEST_TYPE" in 
   "ui_tests")
+    if [[ -z $BROWSER ]] ; then
+      echo "Error: BROWSER must be set" >&2
+      exit 1
+    fi
+
+    if [[ -z $BROWSER_SIZE ]] ; then
+      echo "Error: BROWSER_SIZE must be set" >&2
+      exit 1
+    fi
+
     BROWSER_PLATFORM=$(echo "${BROWSER}" | awk '{print $1}')
     BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
 
-    gradle_opts="-Denv=remote -Dbrowser=${BROWSER_PLATFORM} -Dversion=${BROWSER_VERSION} -DwindowSize=${BROWSER_SIZE} -DremoteUrl=${REMOTE_URL}"
+    GRADLE_OPTS="${GRADLE_OPTS} -Dbrowser=${BROWSER_PLATFORM}"
+    GRADLE_OPTS="${GRADLE_OPTS} -Dversion=${BROWSER_VERSION}"
+    GRADLE_OPTS="${GRADLE_OPTS} -DwindowSize=${BROWSER_SIZE}"
+
+    if [[ -n $REMOTE_URL ]] ; then
+      GRADLE_OPTS="${GRADLE_OPTS} -Denv=remote -DremoteUrl=${REMOTE_URL}"
+    else
+      GRADLE_OPTS="${GRADLE_OPTS} -Denv=local"
+    fi
   ;;
   "mobile_tests")
-    gradle_opts="-DdeviceHost=browserstack"
+    GRADLE_OPTS="-DdeviceHost=browserstack"
   ;;
   "api_tests")
   ;;
+  *)
+    echo "Error: unable to run unknown tasks. Only ui_tests, mobile_tests, and api_tests are possible" >&2
+    exit 1
+  ;;
 esac
 
-if [[ -n $gradle_opts ]] ; then
-  ./gradlew clean "$TEST_TYPE" $gradle_opts
-else
-  ./gradlew clean "$TEST_TYPE"
-fi
+./gradlew clean "$TEST_TYPE" $GRADLE_OPTS
