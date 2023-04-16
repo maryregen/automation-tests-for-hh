@@ -11,19 +11,16 @@
 # ./gradlew clean ui_tests -Dbrowser=CHROME -Dversion=112.0 -DwindowSize=1920x1080 -DremoteUrl=http://localhost:4444/wd/hub
 # ./gradlew clean mobile_tests -DdeviceHost=browserstack
 
-gradle_opts=""
+echo "==> Running ${TEST_TYPE}..."
 
-if [[ -z $TEST_TYPE ]] ; then
-  echo "Error: TEST_TYPE must be specified" >&2
-  exit 1
-fi
+gradle_opts=""
 
 case "$TEST_TYPE" in 
   "ui_tests")
     BROWSER_PLATFORM=$(echo "${BROWSER}" | awk '{print $1}')
     BROWSER_VERSION=$(echo "${BROWSER}" | awk '{print $2}')
 
-    gradle_opts="-Dbrowser=${BROWSER_PLATFORM} -Dversion=${BROWSER_VERSION} -DwindowSize=${BROWSER_SIZE} -DremoteUrl=${REMOTE_URL}"
+    gradle_opts="-Denv=remote -Dbrowser=${BROWSER_PLATFORM} -Dversion=${BROWSER_VERSION} -DwindowSize=${BROWSER_SIZE} -DremoteUrl=${REMOTE_URL}"
   ;;
   "mobile_tests")
     gradle_opts="-DdeviceHost=browserstack"
