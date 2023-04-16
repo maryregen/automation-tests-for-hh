@@ -53,5 +53,5 @@ bin/
 # Default ignored files
 /shelf/
 /workspace.xml
-src/test/resources/apps/hh.apk
+# src/test/resources/apps/hh.apk
 *.txt
