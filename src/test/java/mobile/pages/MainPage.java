@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;
 import static io.appium.java_client.AppiumBy.id;
@@ -16,13 +17,16 @@ public class MainPage {
     }
 
     @Step("Запретить нотификации")
-    public static void denyNotifications() {
+    public MainPage denyNotifications() {
         $(id("com.android.permissioncontroller:id/permission_deny_button"))
                 .shouldBe(Condition.enabled)
                 .click();
+        return this;
     }
 
-    public SelenideElement getHeader() {
-        return $(id("ru.hh.android:id/cell_section_header_large_narrow_text_view"));
+    @Step("Текст заголовка страницы с вакансиями {0}")
+    public MainPage checkHeader(String header) {
+        $(id("ru.hh.android:id/cell_section_header_large_narrow_text_view")).shouldHave(text(header));
+        return this;
     }
 }

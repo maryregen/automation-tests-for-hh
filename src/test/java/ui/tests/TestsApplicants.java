@@ -18,11 +18,7 @@ public class TestsApplicants extends TestBase {
         String indexTitle = "Работа найдётся для каждого";
 
         MainPage mainPage = MainPage.openPage();
-        ApplicantMainPage applicantPage = mainPage.clickApplicantLink();
-
-        step("Страница должна содержать текст для соискателя", () -> {
-            applicantPage.getIndexTitle().shouldHave(text(indexTitle));
-        });
+        mainPage.clickApplicantLink().checkIndexTitle(indexTitle);
     }
 
     @Test
@@ -32,12 +28,7 @@ public class TestsApplicants extends TestBase {
         String search = "QA инженер автоматизация";
 
         MainPage mainPage = MainPage.openPage();
-        ApplicantMainPage applicantPage = mainPage.clickApplicantLink();
-        ApplicantSearchPage applicantSearchPage = applicantPage.search(search);
-
-        step("Убедиться, что найдены вакансии именно для QA", () -> {
-            applicantSearchPage.getSearchHeader().shouldHave(text(search));
-        });
+        mainPage.clickApplicantLink().search(search).checkSearchHeader(search);
     }
 
     @Test
@@ -47,12 +38,7 @@ public class TestsApplicants extends TestBase {
         String search = "Яндекс";
 
         MainPage mainPage = MainPage.openPage();
-        ApplicantMainPage applicantPage = mainPage.clickApplicantLink();
-        ApplicantSearchPage applicantSearchPage = applicantPage.search(search);
-
-        step("Убедиться, что найдены вакансии компании Яндекс", () -> {
-            applicantSearchPage.getSearchHeader().shouldHave(text(search));
-        });
+        mainPage.clickApplicantLink().search(search).checkSearchHeader(search);
     }
 
     @Test
@@ -63,11 +49,6 @@ public class TestsApplicants extends TestBase {
         String match = "Работа старшим системным администратором";
 
         MainPage mainPage = MainPage.openPage();
-        ApplicantMainPage applicantPage = mainPage.clickApplicantLink();
-        ApplicantSearchPage applicantSearchPage = applicantPage.search(search);
-
-        step("Убедиться, что найдены вакансии для должности", () -> {
-            applicantSearchPage.getSearchHeader().shouldHave(text(match));
-        });
+        mainPage.clickApplicantLink().search(search).checkSearchHeader(match);
     }
 }

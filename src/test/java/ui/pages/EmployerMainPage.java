@@ -2,6 +2,8 @@ package ui.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
 public class EmployerMainPage extends MainPage {
@@ -11,7 +13,9 @@ public class EmployerMainPage extends MainPage {
         return page(EmployerSearchPage.class);
     }
 
-    public SelenideElement getIndexTitle() {
-        return $("div[data-qa='employer-index-title']");
+    @Step("Страница должна сожержать текст для работодателя")
+    public EmployerMainPage checkIndexTitle(String title) {
+        $("div[data-qa='employer-index-title']").shouldHave(text(title));
+        return this;
     }
 }

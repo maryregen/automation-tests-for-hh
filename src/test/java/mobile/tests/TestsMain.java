@@ -14,8 +14,6 @@ public class TestsMain extends TestBase {
     @DisplayName("Проверка заголовка главной страницы с вакансиями")
     @Test
     void checkMainPageHasWelcomeText() {
-        step("Текст заголовка страницы с вакансиями 'Вакансии для вас'", () -> {
-            mainPage.getHeader().shouldHave(text(header));
-        });
+        mainPage.checkHeader(header);
     }
 }
