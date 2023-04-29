@@ -17,11 +17,12 @@ public class TestsVacancies {
     @Test
     void checkVacanciesList() {
         step("Проверить статус ответа метода vacancies", () -> {
-            given(getVacanciesListRequestSpec)
+            given(requestSpec)
                     .when()
-                    .get()
+                    .get("/vacancies")
                     .then()
-                    .spec(responseSpecCode200);
+                    .statusCode(200)
+                    .spec(responseSpec);
         });
     }
 
@@ -31,12 +32,13 @@ public class TestsVacancies {
     @ValueSource(strings = {"Продавец", "Консультант"})
     void checkVacanciesByGivenKeywords(String keyword) {
         step("Искать вакансии по определенным словам", () -> {
-            EmployersListResponseModel response = given(getVacanciesListRequestSpec)
+            EmployersListResponseModel response = given(requestSpec)
                     .queryParam("text", keyword)
                     .when()
                     .get()
                     .then()
-                    .spec(responseSpecCode200)
+                    .statusCode(200)
+                    .spec(responseSpec)
                     .extract()
                     .as(EmployersListResponseModel.class);
 

@@ -24,16 +24,12 @@ public class TestBase {
     static void beforeAll() {
         Configuration.browserSize = null;
 
-        if (deviceHost == null) {
-            deviceHost = "emulator";
-        }
-
-        if (deviceHost.equals("emulator")) {
-            Configuration.browser = EmulatorMobileDriver.class.getName();
-        } else {
-            if (deviceHost.equals("browserstack")) {
+        switch (deviceHost) {
+            case "browserstack":
                 Configuration.browser = BrowserstackMobileDriver.class.getName();
-            }
+                break;
+            default:
+                Configuration.browser = EmulatorMobileDriver.class.getName();
         }
     }
 

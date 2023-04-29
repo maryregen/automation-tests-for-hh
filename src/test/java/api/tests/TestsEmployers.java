@@ -18,12 +18,13 @@ public class TestsEmployers {
     @ValueSource(strings = {"Вкусвилл", "СберМаркет"})
     void checkEmployersByGivenKeywords(String keyword) {
         step("Искать вакансии по определенным словам", () -> {
-            EmployersListResponseModel response = given(getEmployersListRequestSpec)
+            EmployersListResponseModel response = given(requestSpec)
                     .queryParam("text", keyword)
                     .when()
-                    .get()
+                    .get("/employers")
                     .then()
-                    .spec(responseSpecCode200)
+                    .statusCode(200)
+                    .spec(responseSpec)
                     .extract()
                     .as(EmployersListResponseModel.class);
 

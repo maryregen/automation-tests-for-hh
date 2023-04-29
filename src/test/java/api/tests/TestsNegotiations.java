@@ -22,40 +22,20 @@ public class TestsNegotiations {
         body.setResumeId(testData.resumeId);
         body.setMessage(testData.message);
 
-        // FIXME: для успешного POST-запроса к api.hh.ru необходима авторизация. К сожалению, авторизация
-        // требует подтверждения со стороны команды разработки и для учебного проекта получить учётные данные
-        // невозможно. В комментариях указан пример того, как это могло бы выглядеть при наличии соответствующих
-        // доступов.
-        //
-        // Сейчас мы обрабатываем только 403: на указанную вакансию невозможно откликнуться по причине
-        // отсутствия доступа к ней.
         step("Проверить статус ответа при отклике без авторизации", () -> {
-            ForbiddenResponseModel response = given(postNegotiationRequestSpec)
+            ForbiddenResponseModel response = given(requestSpec)
                     .body(body)
                     .when()
-                    .post()
+                    .post("/negotiations")
                     .then()
-                    .spec(responseSpecCode403)
+                    .statusCode(403)
+                    .spec(responseSpec)
                     .extract()
                     .as(ForbiddenResponseModel.class);
 
             for (ForbiddenErrorResponseModel error : response.getErrors()) {
                 assertThat(error.getType()).containsIgnoringCase("forbidden");
             }
-
-            /*
-            String location = given(postNegotiationRequestSpec)
-                    .body(body)
-                    .when()
-                    .post()
-                    .then()
-                    .spec(responseSpecCode403)
-                    .extract()
-                    .response()
-                    .header("location");
-
-            assertThat(location).matches("^/negotiations/([0-9].+)");
-            */
         });
     }
 }

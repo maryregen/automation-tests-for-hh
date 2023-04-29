@@ -55,3 +55,7 @@ bin/
 /workspace.xml
 # src/test/resources/apps/hh.apk
 *.txt
+/settings.gradle
+/gradlew.bat
+/gradlew
+/gradle/

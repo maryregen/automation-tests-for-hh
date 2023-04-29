@@ -4,13 +4,13 @@ import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import org.junit.jupiter.api.AfterEach;
 import ui.drivers.WebDriverProvider;
-import ui.pages.EmployerMainPage;
 import ui.helpers.Attachments;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 public class TestBase {
+    public static String env = System.getProperty("env");
     @BeforeAll
     static void beforeAll() {
         WebDriverProvider provider = new WebDriverProvider();
@@ -29,6 +29,9 @@ public class TestBase {
         Attachments.screenshotAs("Last screenshot");
         Attachments.pageSource();
         Attachments.browserConsoleLogs();
-        Attachments.addVideo();
+
+        if (env.equals("remote")) {
+            Attachments.addVideo();
+        }
     }
 }
