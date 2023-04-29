@@ -3,11 +3,6 @@ package ui.tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import ui.pages.ApplicantMainPage;
-import ui.pages.MainPage;
-
-import static com.codeborne.selenide.Condition.text;
-import static io.qameta.allure.Allure.step;
 
 public class TestsMain extends TestBase {
     @Test
@@ -17,23 +12,23 @@ public class TestsMain extends TestBase {
         String locale = "EN";
         String indexTitle = "There's a job for everyone";
 
-        MainPage mainPage = MainPage.openPage();
+        mainPage.openPage();
         mainPage.changeLocale(locale);
-
-        mainPage.clickApplicantLink().checkIndexTitle(indexTitle);
+        mainPage.clickApplicantLink();
+        applicantMainPage.checkIndexTitle(indexTitle);
     }
 
     @Test
     @Tag("UI")
     @DisplayName("Проверка смены региона")
     public void checkRegionSwitcher() {
-        String search = "Казань";
-        String match = "Работа в компаниях Казани";
+        String city = "Казань";
+        String title = "Работа в компаниях Казани";
 
-        MainPage mainPage = MainPage.openPage();
-        mainPage.clickApplicantLink()
-                .changeRegion(search)
-                .clickApplicantLink()
-                .checkWorkInCompanyTitle(match);
+        mainPage.openPage();
+        mainPage.clickApplicantLink();
+        mainPage.changeRegion(city);
+        mainPage.clickApplicantLink();
+        applicantMainPage.checkWorkInCompanyTitle(title);
     }
 }

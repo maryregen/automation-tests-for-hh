@@ -12,6 +12,12 @@ import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.*;
 
 public class TestsEmployers {
+    private void checkVacanciesContainKeyword(VacancyResponseModel[] vacancies, String keyword) {
+        for (VacancyResponseModel vacancy : vacancies) {
+            assertThat(vacancy.getName()).containsIgnoringCase(keyword);
+        }
+    }
+
     @Tag("API")
     @DisplayName("Поиск работодателя по определенным словам")
     @ParameterizedTest(name = "Поиск работодателя по слову {0}")
@@ -30,9 +36,7 @@ public class TestsEmployers {
 
             VacancyResponseModel[] vacancies = response.getItems();
 
-            for (VacancyResponseModel vacancy : vacancies) {
-                assertThat(vacancy.getName()).containsIgnoringCase(keyword);
-            }
+            checkVacanciesContainKeyword(vacancies, keyword);
             assertThat(vacancies.length).isNotEqualTo(0);
         });
     }

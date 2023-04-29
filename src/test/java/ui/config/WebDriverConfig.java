@@ -7,11 +7,8 @@ import org.aeonbits.owner.Config;
 })
 public interface WebDriverConfig extends Config {
 
-    //зачитываем данные из командной строки
     @Key("baseUrl")
-    // обрабатывает дефолтное значение
     @DefaultValue("https://hh.ru")
-    // конвертируем в возращаемый тип
     String getBaseUrl();
 
     @Key("browser")

@@ -6,7 +6,7 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
-public class ApplicantSearchPage extends MainPage {
+public class ApplicantSearchPage {
 
     @Step("Получаем элемент заголовка страницы поиска")
     public ApplicantSearchPage checkSearchHeader(String title) {

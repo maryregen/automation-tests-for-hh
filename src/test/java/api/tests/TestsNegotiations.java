@@ -10,6 +10,11 @@ import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TestsNegotiations {
+    private void checkErrorsContainKeyword(ForbiddenErrorResponseModel[] errors, String keyword) {
+        for (ForbiddenErrorResponseModel error : errors) {
+            assertThat(error.getType()).containsIgnoringCase(keyword);
+        }
+    }
 
     private TestData testData = new TestData();
 
@@ -33,9 +38,7 @@ public class TestsNegotiations {
                     .extract()
                     .as(ForbiddenResponseModel.class);
 
-            for (ForbiddenErrorResponseModel error : response.getErrors()) {
-                assertThat(error.getType()).containsIgnoringCase("forbidden");
-            }
+            checkErrorsContainKeyword(response.getErrors(), "forbidden");
         });
     }
 }

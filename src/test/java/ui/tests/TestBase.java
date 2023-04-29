@@ -8,8 +8,13 @@ import ui.helpers.Attachments;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import ui.pages.*;
 
 public class TestBase {
+    MainPage mainPage = new MainPage();
+    EmployerMainPage employerMainPage = new EmployerMainPage();
+    ApplicantMainPage applicantMainPage = new ApplicantMainPage();
+    ApplicantSearchPage applicantSearchPage = new ApplicantSearchPage();
     public static String env = System.getProperty("env");
     @BeforeAll
     static void beforeAll() {

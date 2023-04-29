@@ -13,6 +13,11 @@ import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class TestsApplicantComments {
+    private void checkErrorsContainKeyword(ForbiddenErrorResponseModel[] errors, String keyword) {
+        for (ForbiddenErrorResponseModel error : errors) {
+            assertThat(error.getType()).containsIgnoringCase(keyword);
+        }
+    }
 
     @Tag("API")
     @DisplayName("Удаление комментариев соискателей")
@@ -22,16 +27,14 @@ public class TestsApplicantComments {
         step("Искать вакансии по определенным словам", () -> {
             ForbiddenResponseModel response = given(requestSpec)
                     .when()
-                    .delete("/applicant_comments" + applicantId.toString() + "/" + commentId.toString())
+                    .delete("/applicant_comments/" + applicantId.toString() + "/" + commentId.toString())
                     .then()
                     .statusCode(403)
                     .spec(responseSpec)
                     .extract()
                     .as(ForbiddenResponseModel.class);
 
-            for (ForbiddenErrorResponseModel error : response.getErrors()) {
-                assertThat(error.getType()).containsIgnoringCase("forbidden");
-            }
+            checkErrorsContainKeyword(response.getErrors(), "forbidden");
         });
     }
 }

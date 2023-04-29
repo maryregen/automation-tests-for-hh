@@ -5,11 +5,11 @@ import io.qameta.allure.Step;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 
-public class ApplicantMainPage extends MainPage {
+public class ApplicantMainPage {
     @Step("Ищем в поиске по выражению {0}")
-    public ApplicantSearchPage search(String text) {
+    public ApplicantMainPage searchVacanciesByText(String text) {
         $("[data-qa='search-input']").setValue(text).pressEnter();
-        return page(ApplicantSearchPage.class);
+        return this;
     }
 
     @Step("Страница должна содержать текст для соискателя")

@@ -16,14 +16,12 @@ public class WebDriverProvider {
 
     private void createWebDriver() {
         switch (config.getBrowser().toLowerCase()) {
-            case "chrome":
-                Configuration.browser = "chrome";
-                break;
             case "firefox":
                 Configuration.browser = "firefox";
                 break;
+            case "chrome":
             default:
-                throw new RuntimeException(config.getBrowser());
+                Configuration.browser = "chrome";
         }
 
         Configuration.baseUrl = config.getBaseUrl();

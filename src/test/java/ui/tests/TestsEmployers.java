@@ -16,7 +16,8 @@ public class TestsEmployers extends TestBase {
     public void checkTitleForEmployers() {
         String indexTitle = "Разместите вакансию на hh.ru";
 
-        MainPage mainPage = MainPage.openPage();
-        mainPage.clickEmployerLink().checkIndexTitle(indexTitle);
+        mainPage.openPage();
+        mainPage.clickEmployerLink();
+        employerMainPage.checkIndexTitle(indexTitle);
     }
 }

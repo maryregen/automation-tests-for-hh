@@ -16,14 +16,6 @@ public class MainPage {
         return page(SearchVacancyPage.class);
     }
 
-    @Step("Запретить нотификации")
-    public MainPage denyNotifications() {
-        $(id("com.android.permissioncontroller:id/permission_deny_button"))
-                .shouldBe(Condition.enabled)
-                .click();
-        return this;
-    }
-
     @Step("Текст заголовка страницы с вакансиями {0}")
     public MainPage checkHeader(String header) {
         $(id("ru.hh.android:id/cell_section_header_large_narrow_text_view")).shouldHave(text(header));
